@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/dashboard", "App\Http\Controllers\Members\DashboardController@index")->middleware(['auth'])->name('members_dashboard');
-Route::get("/profile", "App\Http\Controllers\Members\ProfileController@index")->middleware(['auth'])->name('members_profile');
-Route::put("/updateProfile/{id}", "App\Http\Controllers\Members\ProfileController@update")->middleware(['auth'])->name('members_updateProfile');
+Route::get("/Auth/redirectAuthenticatedUsers", [RedirectAuthenticatedUsersController::class, "home"]);
+
+Route::group(['middleware' => 'checkRole:Members'], function() {
+    Route::get("/members_dashboard", "App\Http\Controllers\Members\DashboardController@index")->name('members_dashboard');
+    Route::get("/profile", "App\Http\Controllers\Members\ProfileController@index")->name('members_profile');
+    Route::put("/updateProfile/{id}", "App\Http\Controllers\Members\ProfileController@update")->name('members_updateProfile');
+});
+
+Route::group(['middleware' => 'checkRole:Admin'], function() {
+    Route::get("/admin_dashboard", "App\Http\Controllers\Admin\DashboardController@index")->name('admin_dashboard');
+});
 
 require __DIR__.'/auth.php';
