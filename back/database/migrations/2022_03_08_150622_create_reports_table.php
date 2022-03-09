@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->unsignedBigInteger('template_id');
+            $table->foreign('template_id')->references('id')->on('templates');
             $table->string('r_title');
             $table->string('r_path');
             $table->timestamps();

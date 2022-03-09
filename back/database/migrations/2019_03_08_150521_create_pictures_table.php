@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('pictures', function (Blueprint $table) {
             $table->id();
+            $table->string('p_path');
+            $table->string('p_name');
+            $table->string('p_type');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::dropIfExists('pictures');
     }
 };

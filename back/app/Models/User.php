@@ -18,6 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
+        'role_id',
         'name',
         'email',
         'password',
@@ -41,4 +43,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the Picture that owns the User.
+     */
+    public function picture()
+    {
+        return $this->belongsTo(Picture::class);
+    }
+
+    /**
+     * Get the Company that owns the User.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get the Role that owns the User.
+     */
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class);
+    }
 }
