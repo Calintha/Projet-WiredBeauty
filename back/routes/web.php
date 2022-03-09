@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get("/dashboard", "App\Http\Controllers\Members\DashboardController@index")->middleware(['auth'])->name('members_dashboard');
+Route::get("/profile", "App\Http\Controllers\Members\ProfileController@index")->middleware(['auth'])->name('members_profile');
+Route::put("/updateProfile/{id}", "App\Http\Controllers\Members\ProfileController@update")->middleware(['auth'])->name('members_updateProfile');
 
 require __DIR__.'/auth.php';
