@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('members_profile')" :active="request()->routeIs('members_profile')">
                         {{ __('Profil') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('members_report')" :active="request()->routeIs('members_report')">
+                        {{ __('Rapport') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('members_template')" :active="request()->routeIs('members_template')">
+                        {{ __('Template') }}
+                    </x-nav-link>
                 </div>
             </div>
 

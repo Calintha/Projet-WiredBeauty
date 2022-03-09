@@ -24,6 +24,10 @@ Route::group(['middleware' => 'checkRole:Members'], function() {
     Route::get("/members_dashboard", "App\Http\Controllers\Members\DashboardController@index")->name('members_dashboard');
     Route::get("/profile", "App\Http\Controllers\Members\ProfileController@index")->name('members_profile');
     Route::put("/updateProfile/{id}", "App\Http\Controllers\Members\ProfileController@update")->name('members_updateProfile');
+
+    Route::get("/report", "App\Http\Controllers\Members\ReportController@index")->name('members_report');
+
+    Route::get("/template", "App\Http\Controllers\Members\TemplateController@index")->name('members_template');
 });
 
 Route::group(['middleware' => 'checkRole:Admin'], function() {
