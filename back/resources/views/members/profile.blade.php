@@ -22,12 +22,10 @@
                     <form method="POST" action="{{ route('members_updateProfile', Auth::user()->id) }}">
                         @csrf
                         @method('PUT')
-
-                        <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                         <label for="name">Nom</label>
-
-                        <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                         <label for="email">Mail</label>
+                        <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
 
                         <button type="submit">Modifier</button>
                         <a href="{{ route('members_profile') }}">Annuler</a>

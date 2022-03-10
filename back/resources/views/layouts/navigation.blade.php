@@ -1,32 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('members_dashboard') }}">Dashboard<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('members_profile') }}">Profil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('members_report') }}">Rapports</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('members_template') }}">Template</a>
-        </li>
-        <li><form method="POST" action="{{ route('logout') }}">@csrf<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-sign-out-alt fa-2x"></i></a></form></li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
+
+  
+<div class="wrapper">
+    <nav class="flex-shrink-0 p-3 bg-white sticky-top vh-100" id="sidebar">
+        <a href="/" class="d-flex align-items-center justify-content-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <span class="fw-bold">Wired Beauty</span>
+        </a>
+        <ul class="list-unstyled ps-0 text-center">
+            <li class="mb-2">
+                <a class="btn align-items-center rounded fw-bold" href="{{ route('members_dashboard') }}">Dashboard</a>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-2">
+                <a href="{{ route('members_profile') }}"><button class="btn btn-toggle align-items-center rounded collapsed fw-bold mb-3">Profile</button></a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('members_report') }}"><button class="btn btn-toggle align-items-center rounded collapsed fw-bold mb-3">Reports</button></a>
+            </li>
+            <li class="mb-2">
+                <a href="{{ route('members_template') }}"><button class="btn btn-toggle align-items-center rounded collapsed fw-bold mb-3">Templates</button></a>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-2">
+                <button class="btn btn-toggle align-items-center rounded collapsed fw-bold mb-3">Informations</button>
+            </li>
+            <li><form method="POST" action="{{ route('logout') }}">@csrf<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();"><i class="fas fa-sign-out-alt fa-2x"></i></a></form></li>
         </ul>
-    </div>
-</nav>
+    </nav>
+</div>

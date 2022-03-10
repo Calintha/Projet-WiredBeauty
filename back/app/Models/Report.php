@@ -9,6 +9,11 @@ class Report extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'r_title',
+        'r_path',
+    ];
+
     /**
      * Get the Company that owns the template.
      */
