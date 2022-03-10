@@ -1,17 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+        <div class="container-fluid">
+            <div class="border border-3 my-5 bg-white rounded-3">
+                <h2 class="text-center float-center mt-1 fw-bold">{{ __('My dashboard') }}<i class="fas fa-home float-end mx-3 mt-1"></i></h2>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="bg-white shadow-sm">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </x-slot>
 </x-app-layout>
