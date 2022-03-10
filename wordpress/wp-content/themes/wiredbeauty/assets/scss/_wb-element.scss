@@ -1,13 +1,23 @@
+.elementor-section.elementor-section-boxed > .elementor-container{
+    max-width: calc(100% - 100px) !important;
+}
+.elementor-container{
+    margin: 20px 0;
+}
 .wb{
     &-img{
         &-left, &-right{
-            padding: 20px 0;
+            &.elementor-section.elementor-section-boxed > .elementor-container{
+                max-width: calc(100% - 30px) !important;
+            }
             p{
                 padding: 30px;
                 background-color: #d5d5d5;
             }
             .elementor-widget-wrap{
                 padding: 0 !important;
+                display: flex;
+                align-content: center;
             }
             .elementor-column.elementor-col-50{
                 width: fit-content;
@@ -19,13 +29,13 @@
                 }
             }
             .elementor-widget-text-editor, .elementor-widget-text-editor *{
-                height: 100%;
+                // height: 100%;
             }
 
         }
         &-right{
             .elementor-widget-text-editor{
-                padding-left: 40px;
+                // padding-left: 40px;
             }
             .elementor-container {
                 max-width: none !important;
@@ -38,7 +48,7 @@
         }
         &-left{
             .elementor-widget-text-editor{
-                padding-right: 40px;
+                // padding-right: 40px;
             }
             .elementor-container {
                 max-width: none !important;
@@ -74,10 +84,10 @@
                     }
                 }
             }
-            padding: 120px 0;
+            padding: 40px 0;
             &::before{
                 position: absolute;
-                bottom: -8%;
+                bottom: 0;
                 left: 2%;            
                 height: auto;
                 width: 98%;
