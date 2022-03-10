@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: "Panton";
+	src: url("./fonts/Panton-Regular.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Panton";
+	src: url("./fonts/Panton-SemiBold.otf") format("opentype");
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Panton";
+	src: url("./fonts/Panton-Bold.otf") format("opentype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Material Icons";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Material Icons"), local("MaterialIcons-Regular"),
+		url(https://fonts.gstatic.com/s/materialicons/v17/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format("woff2");
+}
+
+.material-icons {
+	font-family: "Material Icons";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+}
+
+* {
+	font-family: $main-ff;
+	-webkit-font-smoothing: antialiased;
+	// overflow-x: clip;
+}
+*,
+:after,
+:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body{
+	background: transparent radial-gradient(closest-side at 50% 50%, #E8E8E8 0%, #D9D9D9 100%) 0% 0% no-repeat padding-box;
+}
+
+a {
+	text-decoration: none;
+	color: $blue;
+}
+
+h1, h2, h3, h4, p{
+	color: $black;
+}
+
+h1 {
+	font-size: 60px;
+	font-weight: bold;
+}
+h2{
+	font-size: 24px;
+	font-weight: normal;
+}
+h3{
+	font-size: 18px;
+  	font-weight: bold;
+}
+p{
+	font-size: 18px;
+  	font-weight: 600;
+}
+@media screen and (max-width: 960px) {
+	h1 {
+		font-size: 32px;
+		line-height: 44px;
+
+	}
+	h2 {
+		font-size: 24px;
+		line-height: 33px;
+	}
+	h3{
+		font-size: 22px;
+		line-height: 30px;
+	}
+
+
+}
+

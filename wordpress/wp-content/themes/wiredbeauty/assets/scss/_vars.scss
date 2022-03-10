@@ -1,0 +1,94 @@
+$container-w: 1440px;
+$main-ff: "Panton";
+$error-red: #cc0000;
+
+$phone: 500px;
+$tablet: 770px;
+
+$light-grey: #D5D5D5;
+$medium-grey: #BCBCBC;
+$grey: #6A6967;
+$white: #FFFFFF;
+$blue: #8FB4C4;
+$light-blue: #BED0E5;
+$black: #000000;
+
+$desk-side-padding: 30px;
+$mobile-side-padding: 15px;
+
+$desk-top-padding: 50px;
+$mobile-top-padding: 35px;
+
+
+@mixin shadow($level: 1) {
+  @if $level==1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  @else if $level==2 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  @else if $level==3 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  @else if $level==4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  @else if $level==5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@mixin breakpoint($class) {
+  @if $class==xs {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+  @else if $class==tablet {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @else if $class==sm {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+  @else if $class==md {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+  @else if $class==lg {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
