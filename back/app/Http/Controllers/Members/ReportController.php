@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Members;
 
 use App\Exports\ReportsExport;
 use App\Http\Controllers\Controller;
+use App\Imports\FilesImport;
 use App\Imports\ReportsImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use PDF;
 use Excel;
 
@@ -18,7 +20,23 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('members.report');
+        $path = storage_path('app/public/reports/');
+        $files = File::allFiles($path);
+        foreach(File::allFiles($path) as $file) {
+            echo $file->getExtension();
+        }
+        return view('members.report', compact('files'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function importReport(Request $request)
+    {
+        $request->file->store('public');
+        return back()->with('success','Your report has been addred !');
     }
 
     /**
@@ -41,7 +59,7 @@ class ReportController extends Controller
     */
     public function import(Request $request) 
     {
-        Excel::import(new ReportsImport, $request->file('file')->store('temp'));
+        Excel::import(new FilesImport, $request->file('file')->store('temp'));
         return back();
     }
 
@@ -50,6 +68,6 @@ class ReportController extends Controller
     */
     public function export() 
     {
-        return Excel::download(new ReportsExport, 'users-collection.xlsx');
+        return Excel::download(new FilesExport, 'users-collection.xlsx');
     }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mon profil') }}
+            {{ __('My profil') }}
         </h2>
     </x-slot>
 
@@ -22,13 +22,13 @@
                     <form method="POST" action="{{ route('members_updateProfile', Auth::user()->id) }}">
                         @csrf
                         @method('PUT')
-                        <label for="name">Nom</label>
+                        <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                         <label for="email">Mail</label>
                         <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
 
-                        <button type="submit">Modifier</button>
-                        <a href="{{ route('members_profile') }}">Annuler</a>
+                        <button type="submit">Validate</button>
+                        <a href="{{ route('members_profile') }}">Cancel</a>
                     </form>
                 </div>
             </div>
