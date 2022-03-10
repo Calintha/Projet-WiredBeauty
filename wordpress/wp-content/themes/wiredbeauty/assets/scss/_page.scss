@@ -17,4 +17,21 @@
             content: url("./img/points-title.svg");
         }
     }
+    h2.elementor-heading-title{
+        color: #000000 !important;
+        margin-top: 40px;
+        span{
+            color: #8FB4C4 !important;
+            font-weight: bold;
+        }
+        &::before{
+            position: absolute;
+            top: 30px;
+            left: -1%;            
+            height: auto;
+            width: 99%;
+            overflow: hidden;
+            content: url("./img/points-title.svg");
+        }
+    }
 }

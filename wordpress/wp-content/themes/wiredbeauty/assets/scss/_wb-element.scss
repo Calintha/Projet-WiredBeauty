@@ -66,14 +66,18 @@
         &-circle, &-square{
             .elementor-column{
                 .elementor-widget-wrap{
-                    padding-left: 30px !important;
-                    padding-right: 30px !important;
+                    padding-left: 15% !important;
+                    padding-right: 15% !important;
                 }
                 .elementor-widget-text-editor{
                     padding: 22px;
                     box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
                     background-color: #ebebeb;
 
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
                     &::before{
                         content: url("./img/card-point.svg");
                         display: flex;
@@ -84,13 +88,12 @@
                     }
                 }
             }
-            padding: 40px 0;
             &::before{
                 position: absolute;
-                bottom: 0;
-                left: 2%;            
+                bottom: -30%;
+                left: 3%;       
                 height: auto;
-                width: 98%;
+                width: 97%;
                 overflow: hidden;
                 content: url("./img/points-title.svg");
             }

@@ -78,6 +78,10 @@ p {
   font-size: 18px;
   font-weight: 600;
 }
+p span {
+  color: #8FB4C4 !important;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 960px) {
   h1 {
@@ -108,6 +112,23 @@ p {
 .content h1::before {
   position: absolute;
   top: 0;
+  left: -1%;
+  height: auto;
+  width: 99%;
+  overflow: hidden;
+  content: url("./img/points-title.svg");
+}
+.content h2.elementor-heading-title {
+  color: #000000 !important;
+  margin-top: 40px;
+}
+.content h2.elementor-heading-title span {
+  color: #8FB4C4 !important;
+  font-weight: bold;
+}
+.content h2.elementor-heading-title::before {
+  position: absolute;
+  top: 30px;
   left: -1%;
   height: auto;
   width: 99%;
@@ -158,17 +179,18 @@ p {
 .wb-img-left .elementor-widget-image {
   box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
 }
-.wb-cards-circle, .wb-cards-square {
-  padding: 40px 0;
-}
 .wb-cards-circle .elementor-column .elementor-widget-wrap, .wb-cards-square .elementor-column .elementor-widget-wrap {
-  padding-left: 30px !important;
-  padding-right: 30px !important;
+  padding-left: 15% !important;
+  padding-right: 15% !important;
 }
 .wb-cards-circle .elementor-column .elementor-widget-text-editor, .wb-cards-square .elementor-column .elementor-widget-text-editor {
   padding: 22px;
   box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
   background-color: #ebebeb;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .wb-cards-circle .elementor-column .elementor-widget-text-editor::before, .wb-cards-square .elementor-column .elementor-widget-text-editor::before {
   content: url("./img/card-point.svg");
@@ -180,10 +202,10 @@ p {
 }
 .wb-cards-circle::before, .wb-cards-square::before {
   position: absolute;
-  bottom: 0;
-  left: 2%;
+  bottom: -30%;
+  left: 3%;
   height: auto;
-  width: 98%;
+  width: 97%;
   overflow: hidden;
   content: url("./img/points-title.svg");
 }
