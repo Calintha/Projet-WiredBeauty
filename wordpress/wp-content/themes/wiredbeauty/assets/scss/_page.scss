@@ -5,7 +5,7 @@
 
     h1{
         margin-top: 20px;
-        margin-bottom: 120px;
+        margin-bottom: 40px;
         color: #6a6967 !important;
         &::before{
             position: absolute;
@@ -15,6 +15,12 @@
             width: 99%;
             overflow: hidden;
             content: url("./img/points-title.svg");
+        }
+    }
+    h1.elementor-heading-title{
+        span{
+            color: #8FB4C4 !important;
+            font-weight: bold;
         }
     }
     h2.elementor-heading-title{

@@ -60,7 +60,7 @@ h1, h2, h3, h4, p {
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: bold;
 }
 
@@ -106,7 +106,7 @@ p span {
 }
 .content h1 {
   margin-top: 20px;
-  margin-bottom: 120px;
+  margin-bottom: 40px;
   color: #6a6967 !important;
 }
 .content h1::before {
@@ -117,6 +117,10 @@ p span {
   width: 99%;
   overflow: hidden;
   content: url("./img/points-title.svg");
+}
+.content h1.elementor-heading-title span {
+  color: #8FB4C4 !important;
+  font-weight: bold;
 }
 .content h2.elementor-heading-title {
   color: #000000 !important;
@@ -180,8 +184,8 @@ p span {
   box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
 }
 .wb-cards-circle .elementor-column .elementor-widget-wrap, .wb-cards-square .elementor-column .elementor-widget-wrap {
-  padding-left: 15% !important;
-  padding-right: 15% !important;
+  padding-left: 10% !important;
+  padding-right: 10% !important;
 }
 .wb-cards-circle .elementor-column .elementor-widget-text-editor, .wb-cards-square .elementor-column .elementor-widget-text-editor {
   padding: 22px;
