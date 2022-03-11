@@ -37,3 +37,9 @@ function mytheme_admin_bar_render() {
     $wp_admin_bar->remove_menu('comments');
 }
 add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
+
+// Menu
+function register_my_menu() {
+    register_nav_menu('header-menu',__( 'Menu Header' ));
+  }
+  add_action( 'init', 'register_my_menu' );

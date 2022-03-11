@@ -56,7 +56,6 @@
 }
 
 body{
-	background: transparent radial-gradient(closest-side at 50% 50%, #E8E8E8 0%, #D9D9D9 100%) 0% 0% no-repeat padding-box;
 }
 
 a {
@@ -69,7 +68,7 @@ h1, h2, h3, h4, p{
 }
 
 h1 {
-	font-size: 60px;
+	font-size: 50px;
 	font-weight: bold;
 }
 h2{
@@ -83,6 +82,10 @@ h3{
 p{
 	font-size: 18px;
   	font-weight: 600;
+	span{
+		color: #8FB4C4 !important;
+		font-weight: bold;
+	}
 }
 @media screen and (max-width: 960px) {
 	h1 {

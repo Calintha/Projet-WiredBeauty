@@ -1,3 +1,43 @@
 .content{
-    padding: 0;
+    padding: 60px 0;
+	background: transparent radial-gradient(closest-side at 50% 50%, #E8E8E8 0%, #D9D9D9 100%) 0% 0% no-repeat padding-box;
+    min-height: 100vh;
+
+    h1{
+        margin-top: 20px;
+        margin-bottom: 40px;
+        color: #6a6967 !important;
+        &::before{
+            position: absolute;
+            top: 0;
+            left: -1%;            
+            height: auto;
+            width: 99%;
+            overflow: hidden;
+            content: url("./img/points-title.svg");
+        }
+    }
+    h1.elementor-heading-title{
+        span{
+            color: #8FB4C4 !important;
+            font-weight: bold;
+        }
+    }
+    h2.elementor-heading-title{
+        color: #000000 !important;
+        margin-top: 40px;
+        span{
+            color: #8FB4C4 !important;
+            font-weight: bold;
+        }
+        &::before{
+            position: absolute;
+            top: 30px;
+            left: -1%;            
+            height: auto;
+            width: 99%;
+            overflow: hidden;
+            content: url("./img/points-title.svg");
+        }
+    }
 }
