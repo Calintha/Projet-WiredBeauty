@@ -26,7 +26,7 @@ Route::group(['middleware' => 'checkRole:Members'], function() {
     Route::put("/updateProfile/{id}", "App\Http\Controllers\Members\ProfileController@update")->name('members_updateProfile');
 
     Route::get("/report", "App\Http\Controllers\Members\ReportController@index")->name('members_report');
-    Route::get("/report-generate", "App\Http\Controllers\Members\ReportController@generate")->name('members_generateReport');
+    Route::post("/report-generate", "App\Http\Controllers\Members\ReportController@generate")->name('members_generateReport');
     Route::post("/report-import", "App\Http\Controllers\Members\ReportController@importReport")->name('members_importReport');
     Route::post("/file-import", "App\Http\Controllers\Members\ReportController@import")->name('members_importFile');
     Route::get("/report-export", "App\Http\Controllers\Members\ReportController@export")->name('members_exportReport');

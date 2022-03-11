@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ $title }}</title>
-        <script src="//cdn.amcharts.com/lib/5/index.js"></script>
-        <script src="//cdn.amcharts.com/lib/5/xy.js"></script>
-        <script src="//cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="//cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="//cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="//cdn.amcharts.com/lib/5/radar.js"></script>
+    <script src="//cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="//cdn.amcharts.com/lib/5/plugins/exporting.js"></script>
     </head>
     <body>
         <header>
+            <div class="d-flex justify-content-center">
+                <img src="http://127.0.0.1/storage/logo_wired_beauty.png" class="img-responsive">
+            </div>
             <div class="logo"><h1>DATA REPORT</h1></div>
             <div class="hero">
                 <div class="left">WIRED BEAUTY SAS<br/>beauty-fablab@wired-beauty.com</div>
@@ -18,6 +22,7 @@
         @if($title_1)
             <h2>{{ $title_1 }}</h2>
         @endif
+        <div id="chartdiv_line_1" style="width: 100%; height: 500px"></div>
         @if($graph_1)
             @if($graph_1 == "line")
                 <div id="chartdiv_line_1"></div>
@@ -26,7 +31,7 @@
             @endif
         @endif
         @if($desc_1)
-            <h2>{{ $desc_1 }}</h2>
+            <p>{{ $desc_1 }}</p>
         @endif
 
         @if($title_2)
@@ -40,7 +45,7 @@
             @endif
         @endif
         @if($desc_2)
-            <h2>{{ $desc_2 }}</h2>
+            <p>{{ $desc_2 }}</p>
         @endif
 
         @if($title_3)
@@ -54,7 +59,7 @@
             @endif
         @endif
         @if($desc_3)
-            <h2>{{ $desc_3 }}</h2>
+            <p>{{ $desc_3 }}</p>
         @endif
 
         @if($title_4)
@@ -67,119 +72,78 @@
                 <div id="chartdiv_points_4"></div>
             @endif
         @endif
-        @if($desc_4)
-            <h2>{{ $desc_4 }}</h2>
-        @endif
     </body>
 </html>
 <script>
-    var values = JSON.parse("{{ json_encode($values) }}");
-    var root = am5.Root.new("chartdiv");
+type="text/javascript"> try { this.print(); } catch (e) { window.onload = window.print; };
+// Create root and chart
+var root = am5.Root.new("chartdiv_line_1"); 
 
-    // Set themes
-    // https://www.amcharts.com/docs/v5/concepts/themes/
-    root.setThemes([
-    am5themes_Animated.new(root)
-    ]);
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
 
-    var data = [{
-    date: new Date(2012, 1, 1).getTime(),
-    value: values[0]
-    }, {
-    date: new Date(2012, 1, 2).getTime(),
-    value: values[1]
-    }, {
-    date: new Date(2012, 1, 3).getTime(),
-    value: 12,
-    strokeSettings: {
-        stroke: am5.color(0x990000),
-        strokeDasharray: [3, 3]
-    }
-    }, {
-    date: new Date(2012, 1, 4).getTime(),
-    value: 14
-    }, {
-    date: new Date(2012, 1, 5).getTime(),
-    value: 11
-    }];
+var chart = root.container.children.push( 
+  am5xy.XYChart.new(root, {}) 
+);
 
-    // Create chart
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/
-    var chart = root.container.children.push(
-    am5xy.XYChart.new(root, {
-        focusable: true,
-        panX: true,
-        panY: true,
-        wheelX: "panX",
-        wheelY: "zoomX"
+// Define data
+var data = [{
+  "category": "category 1",
+  "value": 450
+}, {
+  "category": "category 2",
+  "value": 1200
+}, {
+  "category": "category 3",
+  "value": 1850
+}];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    extraTooltipPrecision: 1,
+    renderer: am5xy.AxisRendererY.new(root, {
+      minGridDistance: 30
     })
-    );
+  })
+);
 
-    var easing = am5.ease.linear;
-
-    // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    var xAxis = chart.xAxes.push(
-    am5xy.DateAxis.new(root, {
-        maxDeviation: 0.1,
-        groupData: false,
-        baseInterval: {
-        timeUnit: "day",
-        count: 1
-        },
-        renderer: am5xy.AxisRendererX.new(root, {
-        minGridDistance: 50
-        }),
-        tooltip: am5.Tooltip.new(root, {})
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "category",
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 20,
+      cellStartLocation: 0.2,
+      cellEndLocation: 0.8
     })
-    );
+  })
+);
 
-    var yAxis = chart.yAxes.push(
-    am5xy.ValueAxis.new(root, {
-        maxDeviation: 0.1,
-        renderer: am5xy.AxisRendererY.new(root, {})
-    })
-    );
+xAxis.data.setAll(data);
 
-    // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-    var series = chart.series.push(
-    am5xy.LineSeries.new(root, {
-        minBulletDistance: 10,
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueYField: "value",
-        valueXField: "date",
-        tooltip: am5.Tooltip.new(root, {
-        pointerOrientation: "horizontal",
-        labelText: "{valueY}"
-        })
-    })
-    );
+// Create series
+var series = chart.series.push( 
+  am5xy.ColumnSeries.new(root, { 
+    xAxis: xAxis, 
+    yAxis: yAxis, 
+    valueYField: "value",
+    categoryXField: "category"
+  }) 
+);
 
-    series.strokes.template.setAll({
-    strokeWidth: 3,
-    templateField: "strokeSettings"
-    });
+series.data.setAll(data);
 
-    series.data.setAll(data);
-
-    // Add cursor
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-    var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-    xAxis: xAxis
-    }));
-    cursor.lineY.set("visible", false);
-
-    // add scrollbar
-    chart.set("scrollbarX", am5.Scrollbar.new(root, {
-    orientation: "horizontal"
-    }));
-
-    // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
-    series.appear(1000, 100);
-    chart.appear(1000, 100);
+var exporting = am5plugins_exporting.Exporting.new(root, {
+  menu: am5plugins_exporting.ExportingMenu.new(root, {}),
+  dataSource: data,
+  title: "TEST",
+  pdfOptions: {
+    includeData: true,
+    addURL: false,
+  }
+});
 </script>
 <style>
     body{
