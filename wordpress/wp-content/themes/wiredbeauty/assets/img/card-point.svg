@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="157" height="157" viewBox="0 0 157 157">
+  <filter id="blurMe">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+  </filter>
+  <g id="Groupe_44" data-name="Groupe 44" transform="translate(-223 -1736)">
+    <circle id="Ellipse_11" data-name="Ellipse 11" cx="48.5" cy="48.5" r="48.5" transform="translate(253 1766)" fill="#8fb4c4" opacity="0.41" filter="url(#blurMe)"/>
+    <circle id="Ellipse_9" data-name="Ellipse 9" cx="26.5" cy="26.5" r="26.5" transform="translate(275 1788)" fill="#8fb4c4"/>
+  </g>
+</svg>

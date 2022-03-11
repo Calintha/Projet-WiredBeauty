@@ -1,0 +1,117 @@
+.elementor-section.elementor-section-boxed > .elementor-container{
+    max-width: calc(100% - 100px) !important;
+}
+.elementor-container{
+    margin: 20px 0;
+}
+.wb{
+    &-img{
+        &-left, &-right{
+            &.elementor-section.elementor-section-boxed > .elementor-container{
+                max-width: calc(100% - 30px) !important;
+            }
+            p{
+                padding: 30px;
+                background-color: #d5d5d5;
+            }
+            .elementor-widget-wrap{
+                padding: 0 !important;
+                display: flex;
+                align-content: center;
+            }
+            .elementor-column.elementor-col-50{
+                width: fit-content;
+            }
+            .elementor-widget-image{
+                z-index: 1;
+                img{
+                    max-height: 400px;
+                }
+            }
+            .elementor-widget-text-editor, .elementor-widget-text-editor *{
+                // height: 100%;
+            }
+
+        }
+        &-right{
+            .elementor-widget-text-editor{
+                // padding-left: 40px;
+            }
+            .elementor-container {
+                max-width: none !important;
+                margin-right: 0 !important;
+            }
+            .elementor-widget-image{
+                box-shadow: -15px 15px 30px 0 rgba(0, 0, 0, 0.16);
+            }
+
+        }
+        &-left{
+            .elementor-widget-text-editor{
+                // padding-right: 40px;
+            }
+            .elementor-container {
+                max-width: none !important;
+                margin-left: 0 !important;
+            }
+            .elementor-widget-image{
+                box-shadow: 15px 15px 30px 0 rgb(0, 0, 0, 0.16);
+            }
+
+        }
+
+    }
+
+    &-cards{
+        &-circle, &-square{
+            .elementor-column{
+                .elementor-widget-wrap{
+                    padding-left: 10% !important;
+                    padding-right: 10% !important;
+                }
+                .elementor-widget-text-editor{
+                    padding: 22px;
+                    box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
+                    background-color: #ebebeb;
+
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    &::before{
+                        content: url("./img/card-point.svg");
+                        display: flex;
+                        justify-content: center;
+                    }
+                    p{
+                        color: $grey;
+                    }
+                }
+            }
+            &::before{
+                position: absolute;
+                bottom: -30%;
+                left: 3%;       
+                height: auto;
+                width: 97%;
+                overflow: hidden;
+                content: url("./img/points-title.svg");
+            }
+        }
+        &-circle{
+
+        }
+        &-square{
+
+        }
+    }
+    &-text{
+
+    }
+    &-title{
+        &-points{
+
+        }
+
+    }
+}

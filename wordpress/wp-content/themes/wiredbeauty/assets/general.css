@@ -1,0 +1,277 @@
+@font-face {
+  font-family: "Panton";
+  src: url("./fonts/Panton-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Panton";
+  src: url("./fonts/Panton-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Panton";
+  src: url("./fonts/Panton-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(https://fonts.gstatic.com/s/materialicons/v17/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format("woff2");
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  font-family: "Panton";
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #8FB4C4;
+}
+
+h1, h2, h3, h4, p {
+  color: #000000;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 600;
+}
+p span {
+  color: #8FB4C4 !important;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 960px) {
+  h1 {
+    font-size: 32px;
+    line-height: 44px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  h3 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+.content {
+  padding: 60px 0;
+  background: transparent radial-gradient(closest-side at 50% 50%, #E8E8E8 0%, #D9D9D9 100%) 0% 0% no-repeat padding-box;
+  min-height: 100vh;
+}
+.content h1 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: #6a6967 !important;
+}
+.content h1::before {
+  position: absolute;
+  top: 0;
+  left: -1%;
+  height: auto;
+  width: 99%;
+  overflow: hidden;
+  content: url("./img/points-title.svg");
+}
+.content h1.elementor-heading-title span {
+  color: #8FB4C4 !important;
+  font-weight: bold;
+}
+.content h2.elementor-heading-title {
+  color: #000000 !important;
+  margin-top: 40px;
+}
+.content h2.elementor-heading-title span {
+  color: #8FB4C4 !important;
+  font-weight: bold;
+}
+.content h2.elementor-heading-title::before {
+  position: absolute;
+  top: 30px;
+  left: -1%;
+  height: auto;
+  width: 99%;
+  overflow: hidden;
+  content: url("./img/points-title.svg");
+}
+
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: calc(100% - 100px) !important;
+}
+
+.elementor-container {
+  margin: 20px 0;
+}
+
+.wb-img-left.elementor-section.elementor-section-boxed > .elementor-container, .wb-img-right.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: calc(100% - 30px) !important;
+}
+.wb-img-left p, .wb-img-right p {
+  padding: 30px;
+  background-color: #d5d5d5;
+}
+.wb-img-left .elementor-widget-wrap, .wb-img-right .elementor-widget-wrap {
+  padding: 0 !important;
+  display: flex;
+  align-content: center;
+}
+.wb-img-left .elementor-column.elementor-col-50, .wb-img-right .elementor-column.elementor-col-50 {
+  width: fit-content;
+}
+.wb-img-left .elementor-widget-image, .wb-img-right .elementor-widget-image {
+  z-index: 1;
+}
+.wb-img-left .elementor-widget-image img, .wb-img-right .elementor-widget-image img {
+  max-height: 400px;
+}
+.wb-img-right .elementor-container {
+  max-width: none !important;
+  margin-right: 0 !important;
+}
+.wb-img-right .elementor-widget-image {
+  box-shadow: -15px 15px 30px 0 rgba(0, 0, 0, 0.16);
+}
+.wb-img-left .elementor-container {
+  max-width: none !important;
+  margin-left: 0 !important;
+}
+.wb-img-left .elementor-widget-image {
+  box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
+}
+.wb-cards-circle .elementor-column .elementor-widget-wrap, .wb-cards-square .elementor-column .elementor-widget-wrap {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+.wb-cards-circle .elementor-column .elementor-widget-text-editor, .wb-cards-square .elementor-column .elementor-widget-text-editor {
+  padding: 22px;
+  box-shadow: 15px 15px 30px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ebebeb;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.wb-cards-circle .elementor-column .elementor-widget-text-editor::before, .wb-cards-square .elementor-column .elementor-widget-text-editor::before {
+  content: url("./img/card-point.svg");
+  display: flex;
+  justify-content: center;
+}
+.wb-cards-circle .elementor-column .elementor-widget-text-editor p, .wb-cards-square .elementor-column .elementor-widget-text-editor p {
+  color: #6A6967;
+}
+.wb-cards-circle::before, .wb-cards-square::before {
+  position: absolute;
+  bottom: -30%;
+  left: 3%;
+  height: auto;
+  width: 97%;
+  overflow: hidden;
+  content: url("./img/points-title.svg");
+}
+header {
+  background: transparent radial-gradient(closest-side at 50% 50%, #E8E8E8 0%, #D9D9D9 100%) 0% 0% no-repeat padding-box;
+}
+header .navbar {
+  display: flex;
+  align-items: center;
+  padding: 30px 50px;
+}
+header .navbar .cont-logo img {
+  height: 70px;
+}
+header .navbar .login {
+  background-color: #8FB4C4;
+  padding: 8px 20px;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  color: #D5D5D5;
+  font-weight: bold;
+  white-space: nowrap;
+}
+header .navbar .nav-links {
+  padding: 0 70px;
+  width: 100%;
+}
+header .navbar .nav-links ul {
+  list-style: none;
+  padding-inline-start: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+}
+header .navbar .nav-links ul li {
+  border-top: 5px solid #BEBABA;
+  transition: 0.2s;
+  width: 18%;
+}
+header .navbar .nav-links ul li a {
+  color: #A3A3A3 !important;
+  transition: 0.2s;
+}
+header .navbar .nav-links ul li.current-menu-item, header .navbar .nav-links ul li:hover {
+  border-top: 5px solid #8FB4C4;
+}
+header .navbar .nav-links ul li.current-menu-item a, header .navbar .nav-links ul li:hover a {
+  color: #8FB4C4 !important;
+}
+
+footer {
+  background: #8FB4C4 0% 0% no-repeat padding-box;
+}
+footer .cont-logo {
+  width: fit-content;
+  margin: auto;
+  padding: 50px;
+  text-align: center;
+}
+footer .cont-logo p {
+  color: #D5D5D5;
+}
+
+/*# sourceMappingURL=general.css.map */
