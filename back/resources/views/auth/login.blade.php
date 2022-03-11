@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <img src="{{ asset('storage/logo_wired_beauty.png') }}" class="img-responsive">
             </a>
         </x-slot>
 

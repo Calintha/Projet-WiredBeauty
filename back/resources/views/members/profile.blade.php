@@ -23,6 +23,41 @@
 
         <div class="container">
             <div class="justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3 fw-bold">
+                                Company :
+                            </div>
+                            <div class="col-9">
+                                {{ Auth::user()->company->c_name }}, {{ Auth::user()->company->c_detail }}
+                            </div>
+                            <div class="col-3 fw-bold">
+                                Mail :
+                            </div>
+                            <div class="col-9">
+                                {{ Auth::user()->company->c_email }}
+                            </div>
+                            <div class="col-3 fw-bold">
+                                Phone :
+                            </div>
+                            <div class="col-9">
+                                {{ Auth::user()->company->c_telephone }}
+                            </div>
+                            <div class="col-3 fw-bold">
+                                Address :
+                            </div>
+                            <div class="col-9">
+                                {{ Auth::user()->company->c_no_street }}, {{ Auth::user()->company->c_streetname }}, {{ Auth::user()->company->c_postalcode }}, {{ Auth::user()->company->c_city }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="justify-content-center">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="POST" action="{{ route('members_updateProfile', Auth::user()->id) }}">
                         @csrf

@@ -6,9 +6,10 @@ use App\Exports\ReportsExport;
 use App\Http\Controllers\Controller;
 use App\Imports\FilesImport;
 use App\Imports\ReportsImport;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use PDF;
+use mikehaertl\wkhtmlto\Pdf;
 use Excel;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,9 @@ class ReportController extends Controller
      */
     public function importReport(Request $request)
     {
+        $request->validate([
+            'file' => 'required'
+        ]);
         $request->file->store('public');
         return back()->with('success','Your report has been added !');
     }
@@ -47,16 +51,6 @@ class ReportController extends Controller
     */
     public function generate(Request $request)
     {
-        $request->validate([
-            'title1' => 'min:2|max:65',
-            'comment1' => 'min:5|max:255',
-            'title2' => 'min:2|max:65',
-            'comment2' => 'min:5|max:255',
-            'title3' => 'min:2|max:65',
-            'comment3' => 'min:5|max:255',
-            'title4' => 'min:2|max:65',
-        ]);
-
         $data = [
             'company_name' => Auth::user()->company->c_name,
             'company_email' => Auth::user()->company->c_email,
@@ -64,22 +58,31 @@ class ReportController extends Controller
             'company_address' => Auth::user()->company->c_no_street.", ".Auth::user()->company->c_streetname,
             'company_postalcode' => Auth::user()->company->c_postalcode,
             'company_city' => Auth::user()->company->c_city,
-            'title1' => $request->title1,
-            'graph1' => $request->graph1,
-            'comment1' => $request->comment1,
-            'title2' => $request->title2,
-            'graph2' => $request->graph2,
-            'comment2' => $request->comment2,
-            'title3' => $request->title3,
-            'graph3' => $request->graph3,
-            'comment3' => $request->comment3,
-            'title4' => $request->title4,
-            'graph4' => $request->graph4,
+            'title_1' => $request->title1,
+            'graph_1' => $request->graph1,
+            'desc_1' => $request->comment1,
+            'title_2' => $request->title2,
+            'graph_2' => $request->graph2,
+            'desc_2' => $request->comment2,
+            'title_3' => $request->title3,
+            'graph_3' => $request->graph3,
+            'desc_3' => $request->comment3,
+            'title_4' => $request->title4,
+            'graph_4' => $request->graph4,
+            'date' => Carbon::now()->format('d-m-Y')
         ];
 
-        $pdf = PDF::loadView('template', $data);
-        
-        return $pdf->download('prout.pdf');
+        $render = view('graph')->render();
+   
+        $pdf = new Pdf;
+        $pdf->addPage($render);
+        $pdf->setOptions(['javascript-delay' => 5000]);
+        $pdf->saveAs(public_path('report.pdf'));
+    
+        return response()->download(public_path('report.pdf'));
+
+        //$pdf = PDF::loadView('template', $data);
+        //return $pdf->download('prout.pdf');
     }
 
     /**

@@ -10,44 +10,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="container">
                 <div class="row">
                     <div class="col-3">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-list-list" data-toggle="list" href="#list-list" role="tab" aria-controls="list">List</a>
-                            <a class="list-group-item list-group-item-action" id="list-generate-list" data-toggle="list" href="#list-generate" role="tab" aria-controls="generate">Generate</a>
+                        <a class="list-group-item list-group-item-action active" id="list-generate-list" data-toggle="list" href="#list-generate" role="tab" aria-controls="generate">Generate</a>
+                            <a class="list-group-item list-group-item-action" id="list-list-list" data-toggle="list" href="#list-list" role="tab" aria-controls="list">List</a>
                             <a class="list-group-item list-group-item-action" id="list-import-list" data-toggle="list" href="#list-import" role="tab" aria-controls="import">Import</a>
                             <a class="list-group-item list-group-item-action" id="list-export-list" data-toggle="list" href="#list-export" role="tab" aria-controls="export">Export</a>
                         </div>
                     </div>
                     <div class="col-9">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-list" role="tabpanel" aria-labelledby="list-list-list">
-                                <div class="row justify-content-center align-items-center">
-                                    @foreach($files as $file)
-                                    <div class="col-4 text-center">
-                                        <a href=""></a><i class="fas fa-file-alt fa-8x"></i></a>
-                                    </div>
-                                    @endforeach
-                                </div>
-                                <div class="border border-2 mt-5 py-2 rounded">
-                                    <form action="{{ route('members_importReport') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="vstack gap-2 col-md-5 mx-auto">
-                                            <div class="form-group mb-4">
-                                                <div class="custom-file text-left">
-                                                    <input type="file" name="file" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">Choose a report</label>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                                <button class="btn btn-dark">Import</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="list-generate" role="tabpanel" aria-labelledby="list-generate-list">
+                            <div class="tab-pane fade show active" id="list-generate" role="tabpanel" aria-labelledby="list-generate-list">
                                 <form action="{{ route('members_generateReport') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="container row d-flex justify-content-center align-items-center">
@@ -154,6 +138,35 @@
                                         <button class="btn btn-dark" type="submit">Generate</button>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="tab-pane fade" id="list-list" role="tabpanel" aria-labelledby="list-list-list">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-12 text-center mb-3">
+                                        <h2>List of all your report</h2>
+                                    </div>
+                                    @foreach($files as $file)
+                                    <div class="col-4 text-center">
+                                        <p>{{ $file->getFilename() }}</p>
+                                        <a href="{{ asset('storage/'.$file->getFilename()) }}" target="_blank"><i class="fas fa-file-alt fa-8x"></i></a>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <div class="border border-2 mt-5 py-2 rounded">
+                                    <form action="{{ route('members_importReport') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="vstack gap-2 col-md-5 mx-auto">
+                                            <div class="form-group mb-4">
+                                                <div class="custom-file text-left">
+                                                    <input type="file" name="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Choose a report</label>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button class="btn btn-dark">Import</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="list-import" role="tabpanel" aria-labelledby="list-import-list">
                                 <form action="{{ route('members_importFile') }}" method="POST" enctype="multipart/form-data">
